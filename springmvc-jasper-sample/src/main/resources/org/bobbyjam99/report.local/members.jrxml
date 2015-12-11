@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
+<!-- 2015-12-10T18:28:19 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="members" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="06a3aa38-039c-4687-b4fd-0e87caff98ef">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="src\main\java\org\bobbyjam99\members.xml"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="NAME" class="java.lang.String"/>
+	<group name="NAME">
+		<groupExpression><![CDATA[$F{NAME}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="230" y="0" width="100" height="30" uuid="cb067051-6fb4-498f-ae78-0d1cac21de19"/>
+				<textElement>
+					<font fontName="ipaex"/>
+				</textElement>
+				<text><![CDATA[Static Text]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="80" y="0" width="100" height="30" uuid="e7fa3b23-b29d-48bf-a2dc-55cdb2f3f62e"/>
+				<textElement>
+					<font fontName="ipaex"/>
+				</textElement>
+				<text><![CDATA[Static Text]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField pattern="">
+				<reportElement x="80" y="0" width="100" height="30" uuid="17edf3fb-6c1f-4e7b-8438-a688d6894716"/>
+				<textElement>
+					<font fontName="ipaex"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
