@@ -3,6 +3,7 @@ apply plugin: 'maven'
 apply plugin: 'idea'
 
 test.scanForTestClasses = false
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 repositories {
     mavenCentral()
