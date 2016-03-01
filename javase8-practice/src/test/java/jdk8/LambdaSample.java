@@ -2,10 +2,7 @@ package jdk8;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -70,5 +67,26 @@ public class LambdaSample {
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         List<Integer> pows = list.stream().filter(i -> i < 5).map(i -> i * i).collect(Collectors.toList());
         assertThat(pows, contains(1, 4, 9, 16));
+    }
+
+    /**
+     * パラレルストリームでもforEachOrderedを使用すれば処理順を保持出来る。
+     * ただしパフォーマンスの低下する。
+     */
+    @Test
+    public void forEachOrdered() {
+        IntStream.range(0,10).parallel().forEach(System.out::println);
+        IntStream.range(0,10).parallel().forEachOrdered(System.out::println);
+    }
+
+    @Test
+    public void findFirst() {
+        OptionalDouble number =
+                IntStream.range(0, Integer.MAX_VALUE)
+                .parallel()
+                .mapToDouble(t -> Math.sin(Math.PI * t / 180.0))
+                .filter(x -> x < 0.0)
+                .findFirst();
+        System.out.println(number);
     }
 }
