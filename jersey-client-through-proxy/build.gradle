@@ -1,0 +1,15 @@
+group 'org.bobbyjam99'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = targetCompatibility = "1.8"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.glassfish.jersey.core:jersey-client:2.22.2'
+    compile 'org.glassfish.jersey.connectors:jersey-apache-connector:2.22.2'
+}
