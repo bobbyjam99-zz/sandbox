@@ -20,7 +20,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * Before run this test, you must run app.Application.
  */
-public class HogeControllerTest {
+public class GreetingControllerTest {
 
     @Test
     public void シンプルにアクセス() {
