@@ -11,4 +11,11 @@ public class HogeController {
     public String hello(@RequestParam(value="name", defaultValue="World") String name) {
         return "Hello" + name;
     }
+
+    @RequestMapping("/hello/timeout")
+    public String helloTimeout(@RequestParam(value = "name", defaultValue = "World") String name) throws InterruptedException {
+        Thread.sleep(10_000L);
+        return "Hello" + name;
+    }
+
 }
