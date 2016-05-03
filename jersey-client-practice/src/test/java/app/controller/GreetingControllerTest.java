@@ -14,8 +14,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Before run this test, you must run app.Application.
@@ -73,6 +73,57 @@ public class GreetingControllerTest {
     }
 
     @Test
+    public void Retry成功() {
+        Client client = ClientBuilder.newClient();
+        int retry = 0;
+
+        String result = null;
+
+        do {
+            WebTarget target = client.target("http://localhost:8080/")
+                    .path("hello/retry")
+                    .queryParam("retry", retry);
+
+            Response response = target.request(MediaType.APPLICATION_JSON_TYPE).get();
+            if (response.getStatus() == 200) {
+                result = response.readEntity(String.class);
+                break;
+            } else {
+                retry++;
+            }
+        } while (retry < 5);
+
+        assertThat(result, is("HelloWorld"));
+
+    }
+
+    @Test
+    public void Retry失敗() {
+        Client client = ClientBuilder.newClient();
+        int retry = 0;
+
+        String result = null;
+
+        do {
+            WebTarget target = client.target("http://localhost:8080/")
+                    .path("hello/retry")
+                    .queryParam("retry", retry);
+
+            Response response = target.request(MediaType.APPLICATION_JSON_TYPE).get();
+            if (response.getStatus() == 200) {
+                result = response.readEntity(String.class);
+                break;
+            } else {
+                retry++;
+            }
+        } while (retry < 1);
+
+        assertThat(result, nullValue());
+
+    }
+
+
+    @Test
     @Ignore
     public void ProxyServer経由() {
         ClientConfig config = new ClientConfig();
@@ -88,7 +139,7 @@ public class GreetingControllerTest {
                 .path("forecast/webservice/json/v1")
                 .queryParam("city", "130010");
 
-        String response = target.request(MediaType.APPLICATION_JSON_TYPE).get(String.class);
-        assertTrue(true);
+        Response response = target.request(MediaType.APPLICATION_JSON_TYPE).get();
+        assertThat(response.getStatus(), is(200));
     }
 }
