@@ -1,5 +1,7 @@
 package mrs.domain.model;
 
+import javax.persistence.*;
+
 @Entity
 @Table(name = "usr")
 public class User {

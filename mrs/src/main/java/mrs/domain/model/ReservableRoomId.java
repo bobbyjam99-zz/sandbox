@@ -1,5 +1,6 @@
 package mrs.domain.model;
 
+import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -8,6 +9,7 @@ import java.time.LocalDate;
  */
 @Embeddable
 public class ReservableRoomId implements Serializable {
+
     private Integer roomId;
     private LocalDate reservedDate;
 
@@ -36,7 +38,7 @@ public class ReservableRoomId implements Serializable {
         if (getClass() != obj.getClass()) return false;
         ReservableRoomId other = (ReservableRoomId) obj;
         if (reservedDate == null) {
-            if (other.reservedDate !+ null) return false;
+            if (other.reservedDate != null) return false;
         } else if (!reservedDate.equals(other.reservedDate))
             return false;
 
@@ -45,5 +47,21 @@ public class ReservableRoomId implements Serializable {
         } else if (!roomId.equals(other.roomId))
             return false;
         return true;
+    }
+
+    public Integer getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(Integer roomId) {
+        this.roomId = roomId;
+    }
+
+    public LocalDate getReservedDate() {
+        return reservedDate;
+    }
+
+    public void setReservedDate(LocalDate reservedDate) {
+        this.reservedDate = reservedDate;
     }
 }

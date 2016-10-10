@@ -1,12 +1,14 @@
 package mrs.domain.model;
 
+import javax.persistence.*;
+
 @Entity
 public class ReservableRoom {
     @EmbeddedId
     private ReservableRoomId reservableRoomId;
 
     @ManyToOne
-    @JoinComumn(name = "room_id", insertable = false, updatable = false)
+    @JoinColumn(name= "room_id", insertable= false, updatable= false)
     @MapsId("roomId")
     private MeetingRoom meetingRoom;
 
@@ -15,6 +17,21 @@ public class ReservableRoom {
     }
 
     public ReservableRoom() {
+    }
 
+    public ReservableRoomId getReservableRoomId() {
+        return reservableRoomId;
+    }
+
+    public void setReservableRoomId(ReservableRoomId reservableRoomId) {
+        this.reservableRoomId = reservableRoomId;
+    }
+
+    public MeetingRoom getMeetingRoom() {
+        return meetingRoom;
+    }
+
+    public void setMeetingRoom(MeetingRoom meetingRoom) {
+        this.meetingRoom = meetingRoom;
     }
 }

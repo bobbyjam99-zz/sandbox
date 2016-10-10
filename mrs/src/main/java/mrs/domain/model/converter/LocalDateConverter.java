@@ -1,5 +1,7 @@
 package mrs.domain.model.converter;
 
+import javax.persistence.AttributeConverter;
+import javax.persistence.Converter;
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -7,7 +9,7 @@ import java.time.LocalDate;
 public class LocalDateConverter implements AttributeConverter<LocalDate, Date> {
 
     @Override
-    public Date converToDatabaseColumn(LocalDate date) {
+    public Date convertToDatabaseColumn(LocalDate date) {
         return date == null ? null : Date.valueOf(date);
     }
 
