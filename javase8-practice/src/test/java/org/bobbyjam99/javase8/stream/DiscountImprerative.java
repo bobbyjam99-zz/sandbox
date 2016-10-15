@@ -1,3 +1,5 @@
+package org.bobbyjam99.javase8.stream;
+
 import org.junit.Test;
 
 import java.math.BigDecimal;
