@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Add</title>
+</head>
+<body>
+
+    <form action="/add" method="post" th:action="@{/add}">
+        <input type="text" name="arg1" th:value="${arg1}"/> +
+        <input type="text" name="arg2" th:value="${arg2}"/> =
+        <span th:text="${result}"/><br/>
+        <input type="submit" value="calculate"/>
+    </form>
+</body>
+</html>

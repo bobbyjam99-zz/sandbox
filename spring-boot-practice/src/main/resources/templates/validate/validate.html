@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Validate</title>
+</head>
+<body>
+    <form id="validateForm" th:action="@{/validate}" th:object="${validateForm}" action="#" method="post">
+        <table>
+            <tr>
+                <td>required</td>
+                <td>
+                    <input type="text" name="required" th:field="*{required}"/>
+                    <span th:if="${#fields.hasErrors('*{required}')}" th:errors="*{required}" style="color: red"/>
+                </td>
+            </tr>
+        </table>
+        <input type="submit" value="validate"/>
+    </form>
+</body>
+</html>
