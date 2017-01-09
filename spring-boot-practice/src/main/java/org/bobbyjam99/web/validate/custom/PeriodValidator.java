@@ -30,7 +30,7 @@ public class PeriodValidator implements ConstraintValidator<Period, Object> {
 
         if (from != null && to != null && from.compareTo(to) > 0) {
             context.disableDefaultConstraintViolation();
-            context.buildConstraintViolationWithTemplate(message).addNode(fieldFrom).addConstraintViolation();
+            context.buildConstraintViolationWithTemplate(message).addPropertyNode(fieldFrom).addConstraintViolation();
             return false;
         }
         return true;
