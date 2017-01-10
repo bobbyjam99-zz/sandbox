@@ -21,6 +21,15 @@
                     <span th:if="${#fields.hasErrors('*{age}')}" th:errors="*{age}" style="color: red"/>
                 </td>
             </tr>
+            <tr>
+                <td>期間</td>
+                <td>
+                    <input type="text" name="from" th:field="*{from}"/>
+                    〜
+                    <input type="text" name="to" th:field="*{to}"/>
+                    <span th:if="${#fields.hasErrors('*{from}')}" th:errors="*{from}" style="color: red"/>
+                </td>
+            </tr>
         </table>
         <input type="submit" value="validate"/>
     </form>
