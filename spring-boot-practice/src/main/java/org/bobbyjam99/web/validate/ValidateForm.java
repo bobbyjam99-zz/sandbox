@@ -2,16 +2,31 @@ package org.bobbyjam99.web.validate;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 public class ValidateForm {
 
     @NotEmpty
-    private String required;
+    private String name;
 
-    public String getRequired() {
-        return required;
+    @NotNull
+    @Min(0)
+    private Integer age;
+
+    public String getName() {
+        return name;
     }
 
-    public void setRequired(String required) {
-        this.required = required;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 }

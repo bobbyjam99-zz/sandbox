@@ -8,10 +8,17 @@
     <form id="validateForm" th:action="@{/validate}" th:object="${validateForm}" action="#" method="post">
         <table>
             <tr>
-                <td>required</td>
+                <td>名前</td>
                 <td>
-                    <input type="text" name="required" th:field="*{required}"/>
-                    <span th:if="${#fields.hasErrors('*{required}')}" th:errors="*{required}" style="color: red"/>
+                    <input type="text" name="name" placeholder="必須入力チェック" th:field="*{name}"/>
+                    <span th:if="${#fields.hasErrors('*{name}')}" th:errors="*{name}" style="color: red"/>
+                </td>
+            </tr>
+            <tr>
+                <td>年齢</td>
+                <td>
+                    <input type="text" name="age" placeholder="数値チェック" th:field="*{age}"/>
+                    <span th:if="${#fields.hasErrors('*{age}')}" th:errors="*{age}" style="color: red"/>
                 </td>
             </tr>
         </table>
