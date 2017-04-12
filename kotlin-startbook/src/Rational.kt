@@ -24,3 +24,5 @@ class Rational(n: Int, d: Int) {
             if (b == 0) a
             else gcd(b, a % b)
 }
+// Intに対する拡張関数を定義する
+operator fun Int.plus(r: Rational): Rational = r + this
