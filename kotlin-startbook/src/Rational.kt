@@ -9,11 +9,14 @@ class Rational(n: Int, d: Int) {
     val numerator: Int by lazy { n / g }
     val denominator: Int by lazy { d / g }
     // メソッドplusとして足し算を定義
-    fun plus(that: Rational) =
+    operator fun plus(that: Rational) =
         Rational(
                 numerator * that.denominator + that.numerator * denominator,
                 denominator * that.denominator
         )
+    /* メソッドplusのオーバーロード */
+    operator fun plus(n: Int): Rational =
+        Rational(numerator + n * denominator, denominator)
     // toStringをオーバーライド
     override fun toString(): String = "${numerator}/${denominator}"
     // 再帰関数
