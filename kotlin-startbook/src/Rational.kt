@@ -5,9 +5,15 @@ class Rational(n: Int, d: Int) {
     init {
         require(d != 0, {"denominator must not be null"})
     }
-    private val g = gcd(Math.abs(n), Math.abs(d))
-    val numerator: Int = n / g
-    val denominator: Int = d / g
+    private val g by lazy { gcd(Math.abs(n), Math.abs(d)) }
+    val numerator: Int by lazy { n / g }
+    val denominator: Int by lazy { d / g }
+    // メソッドplusとして足し算を定義
+    fun plus(that: Rational) =
+        Rational(
+                numerator * that.denominator + that.numerator * denominator,
+                denominator * that.denominator
+        )
     // toStringをオーバーライド
     override fun toString(): String = "${numerator}/${denominator}"
     // 再帰関数
